@@ -23,7 +23,7 @@ namespace SteamStorefrontAPI
         public double Final { get; set; }
 
         [JsonProperty("discount_percent")]
-        public long DiscountPercent { get; set; }
+        public int DiscountPercent { get; set; }
     }
 
     public class LongToDoubleConverter : JsonConverter

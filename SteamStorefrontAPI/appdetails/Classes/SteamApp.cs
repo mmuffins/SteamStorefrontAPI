@@ -19,7 +19,7 @@ namespace SteamStorefrontAPI.Classes
         public string Name { get; set; }
 
         [JsonProperty("steam_appid")]
-        public long SteamAppid { get; set; }
+        public int SteamAppid { get; set; }
 
         [JsonProperty("required_age")]
         public string RequiredAge { get; set; }

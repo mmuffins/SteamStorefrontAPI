@@ -13,13 +13,13 @@ namespace SteamStorefrontAPI
     public class Sub
     {
         [JsonProperty("packageid")]
-        public long Packageid { get; set; }
+        public int Packageid { get; set; }
 
         [JsonProperty("percent_savings_text")]
         public string PercentSavingsText { get; set; }
 
         [JsonProperty("percent_savings")]
-        public long PercentSavings { get; set; }
+        public int PercentSavings { get; set; }
 
         [JsonProperty("option_text")]
         public string OptionText { get; set; }

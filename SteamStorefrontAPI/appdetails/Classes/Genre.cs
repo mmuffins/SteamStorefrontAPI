@@ -12,7 +12,7 @@ namespace SteamStorefrontAPI
     public class Genre
     {
         [JsonProperty("id")]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
