@@ -49,10 +49,10 @@ namespace SteamStorefrontAPI.Classes
         public PcRequirements PcRequirements { get; set; }
 
         [JsonProperty("mac_requirements")]
-        public List<MacRequirement> MacRequirements { get; set; }
+        public List<MacRequirements> MacRequirements { get; set; }
 
         [JsonProperty("linux_requirements")]
-        public List<LinuxRequirement> LinuxRequirements { get; set; }
+        public List<LinuxRequirements> LinuxRequirements { get; set; }
 
         [JsonProperty("legal_notice")]
         public string LegalNotice { get; set; }
