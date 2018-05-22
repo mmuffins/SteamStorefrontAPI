@@ -44,8 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="appdetails\AppDetails.cs" />
-    <Compile Include="appdetails\Classes\LinuxRequirement.cs" />
-    <Compile Include="appdetails\Classes\MacRequirement.cs" />
+    <Compile Include="appdetails\Classes\LinuxRequirements.cs" />
+    <Compile Include="appdetails\Classes\MacRequirements.cs" />
     <Compile Include="appdetails\Classes\ReleaseDate.cs" />
     <Compile Include="appdetails\Classes\Recommendations.cs" />
     <Compile Include="appdetails\Classes\PriceOverview.cs" />

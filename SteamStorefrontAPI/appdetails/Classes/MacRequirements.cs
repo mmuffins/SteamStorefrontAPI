@@ -9,7 +9,7 @@ using Newtonsoft.Json.Converters;
 
 namespace SteamStorefrontAPI
 {
-    public class MacRequirement
+    public class MacRequirements
     {
         [JsonProperty("minimum")]
         public string Minimum { get; set; }
