@@ -30,9 +30,8 @@ namespace SteamStorefrontAPI
     {
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            long longValue = long.Parse(reader.Value.ToString());
-            double convertedValue = longValue / 100.0;
-            return convertedValue;
+            var value = reader.Value.ToString();
+            return double.Parse(value.Insert(value.Length - 2, "."));
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
