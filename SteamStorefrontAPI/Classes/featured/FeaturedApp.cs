@@ -61,7 +61,8 @@ namespace SteamStorefrontAPI.Classes
         public string HeaderImage { get; set; }
 
         [JsonProperty("discount_expiration", NullValueHandling = NullValueHandling.Ignore)]
-        public long? DiscountExpiration { get; set; }
+        [JsonConverter(typeof(EpochToDateTimeConverter))]
+        public DateTime? DiscountExpiration { get; set; }
 
         [JsonProperty("controller_support", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(ControllerSupportConverter))]

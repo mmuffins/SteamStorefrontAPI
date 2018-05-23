@@ -74,4 +74,37 @@ namespace SteamStorefrontAPI.Classes
         }
     }
 
+    // Converts an epoch string to a datetime object
+    internal class EpochToDateTimeConverter : JsonConverter
+    {
+        public override bool CanRead
+        {
+            get => true;
+        }
+
+        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null) return null;
+            var value = serializer.Deserialize<string>(reader);
+
+            long parsedValue;
+            if (long.TryParse(value, out parsedValue))
+            {
+                return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(parsedValue);
+            }
+
+            return null;
+        }
+
+        public override bool CanConvert(Type objectType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 }
