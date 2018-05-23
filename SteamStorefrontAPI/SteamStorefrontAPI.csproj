@@ -43,25 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="appdetails\AppDetails.cs" />
-    <Compile Include="appdetails\Classes\LinuxRequirements.cs" />
-    <Compile Include="appdetails\Classes\MacRequirements.cs" />
-    <Compile Include="appdetails\Classes\ReleaseDate.cs" />
-    <Compile Include="appdetails\Classes\Recommendations.cs" />
-    <Compile Include="appdetails\Classes\PriceOverview.cs" />
-    <Compile Include="appdetails\Classes\Platforms.cs" />
-    <Compile Include="appdetails\Classes\PcRequirements.cs" />
-    <Compile Include="appdetails\Classes\PackageGroup.cs" />
-    <Compile Include="appdetails\Classes\Movie.cs" />
-    <Compile Include="appdetails\Classes\Genre.cs" />
-    <Compile Include="appdetails\Classes\Category.cs" />
-    <Compile Include="appdetails\Classes\Highlighted.cs" />
-    <Compile Include="appdetails\Classes\Achievements.cs" />
-    <Compile Include="appdetails\Classes\Sub.cs" />
-    <Compile Include="appdetails\Classes\SupportInfo.cs" />
-    <Compile Include="appdetails\Classes\Screenshot.cs" />
+    <Compile Include="Endpoints\AppDetails.cs" />
+    <Compile Include="Classes\appdetails\LinuxRequirements.cs" />
+    <Compile Include="Classes\appdetails\MacRequirements.cs" />
+    <Compile Include="Classes\appdetails\ReleaseDate.cs" />
+    <Compile Include="Classes\appdetails\Recommendations.cs" />
+    <Compile Include="Classes\appdetails\PriceOverview.cs" />
+    <Compile Include="Classes\appdetails\Platforms.cs" />
+    <Compile Include="Classes\appdetails\PcRequirements.cs" />
+    <Compile Include="Classes\appdetails\PackageGroup.cs" />
+    <Compile Include="Classes\appdetails\Movie.cs" />
+    <Compile Include="Classes\appdetails\Genre.cs" />
+    <Compile Include="Classes\appdetails\Category.cs" />
+    <Compile Include="Classes\appdetails\Highlighted.cs" />
+    <Compile Include="Classes\appdetails\Achievements.cs" />
+    <Compile Include="Classes\featured\FeaturedApp.cs" />
+    <Compile Include="Classes\featured\SteamFeatured.cs" />
+    <Compile Include="Classes\appdetails\Sub.cs" />
+    <Compile Include="Classes\appdetails\SupportInfo.cs" />
+    <Compile Include="Classes\appdetails\Screenshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="appdetails\Classes\SteamApp.cs" />
+    <Compile Include="Classes\appdetails\SteamApp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

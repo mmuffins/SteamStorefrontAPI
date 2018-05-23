@@ -7,14 +7,11 @@ using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace SteamStorefrontAPI
+namespace SteamStorefrontAPI.Classes
 {
-    public class Category
+    public class Recommendations
     {
-        [JsonProperty("id")]
-        public int Id { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
+        [JsonProperty("total")]
+        public long Total { get; set; }
     }
 }

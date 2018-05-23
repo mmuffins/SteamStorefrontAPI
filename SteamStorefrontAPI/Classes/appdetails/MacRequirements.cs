@@ -7,9 +7,9 @@ using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace SteamStorefrontAPI
+namespace SteamStorefrontAPI.Classes
 {
-    public class PcRequirements
+    public class MacRequirements
     {
         [JsonProperty("minimum")]
         public string Minimum { get; set; }

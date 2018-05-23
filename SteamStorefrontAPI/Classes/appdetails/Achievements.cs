@@ -7,11 +7,14 @@ using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace SteamStorefrontAPI
+namespace SteamStorefrontAPI.Classes
 {
-    public class Recommendations
+    public class Achievements
     {
         [JsonProperty("total")]
         public long Total { get; set; }
+
+        [JsonProperty("highlighted")]
+        public List<Highlighted> Highlighted { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace SteamStorefrontAPI
+namespace SteamStorefrontAPI.Classes
 {
     public class ReleaseDate
     {

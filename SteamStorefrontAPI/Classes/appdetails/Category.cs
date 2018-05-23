@@ -7,18 +7,14 @@ using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace SteamStorefrontAPI
+namespace SteamStorefrontAPI.Classes
 {
-
-    public class Screenshot
+    public class Category
     {
         [JsonProperty("id")]
         public int Id { get; set; }
 
-        [JsonProperty("path_thumbnail")]
-        public string PathThumbnail { get; set; }
-
-        [JsonProperty("path_full")]
-        public string PathFull { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 }

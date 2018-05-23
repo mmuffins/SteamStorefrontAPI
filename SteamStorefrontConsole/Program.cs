@@ -19,9 +19,9 @@ namespace SteamStorefrontConsole
 
         static async Task GetGame()
         {
-            //var steamApp = Task.Run(async () => await AppDetails.GetAsync(637670)).Result;
+            var steamApp = Task.Run(async () => await AppDetails.GetAsync(637670)).Result;
             //var steamApp = Task.Run(async () => await AppDetails.GetAsync(443790)).Result;
-            var steamApp = await AppDetails.GetAsync(213670);
+            //var steamApp = await AppDetails.GetAsync(460810, "JP");
 
             Console.WriteLine(steamApp);
         }

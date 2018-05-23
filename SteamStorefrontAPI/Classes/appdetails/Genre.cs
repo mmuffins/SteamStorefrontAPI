@@ -7,14 +7,15 @@ using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace SteamStorefrontAPI
+namespace SteamStorefrontAPI.Classes
 {
-    public class SupportInfo
+    public class Genre
     {
-        [JsonProperty("url")]
-        public string Url { get; set; }
+        [JsonProperty("id")]
+        public int Id { get; set; }
 
-        [JsonProperty("email")]
-        public string Email { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
+
 }
