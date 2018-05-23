@@ -9,13 +9,15 @@ using Newtonsoft.Json.Converters;
 
 namespace SteamStorefrontAPI.Classes
 {
+    public enum ControllerSupport { Full, Partial };
+
     public class FeaturedApp
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("type")]
-        public long Type { get; set; }
+        public int Type { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -24,16 +26,18 @@ namespace SteamStorefrontAPI.Classes
         public bool Discounted { get; set; }
 
         [JsonProperty("discount_percent")]
-        public long DiscountPercent { get; set; }
+        public int DiscountPercent { get; set; }
 
         [JsonProperty("original_price")]
-        public long? OriginalPrice { get; set; }
+        [JsonConverter(typeof(SteamPriceStringConverter))]
+        public double? OriginalPrice { get; set; }
 
         [JsonProperty("final_price")]
-        public long FinalPrice { get; set; }
+        [JsonConverter(typeof(SteamPriceStringConverter))]
+        public double? FinalPrice { get; set; }
 
         [JsonProperty("currency")]
-        public Currency Currency { get; set; }
+        public string Currency { get; set; }
 
         [JsonProperty("large_capsule_image")]
         public string LargeCapsuleImage { get; set; }
@@ -60,6 +64,7 @@ namespace SteamStorefrontAPI.Classes
         public long? DiscountExpiration { get; set; }
 
         [JsonProperty("controller_support", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonConverter(typeof(ControllerSupportConverter))]
         public ControllerSupport? ControllerSupport { get; set; }
     }
 }

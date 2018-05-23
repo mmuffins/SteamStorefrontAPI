@@ -15,49 +15,14 @@ namespace SteamStorefrontAPI.Classes
         public string Currency { get; set; }
 
         [JsonProperty("initial")]
-        [JsonConverter(typeof(LongToDoubleConverter))]
+        [JsonConverter(typeof(SteamPriceStringConverter))]
         public double Initial { get; set; }
 
         [JsonProperty("final")]
-        [JsonConverter(typeof(LongToDoubleConverter))]
+        [JsonConverter(typeof(SteamPriceStringConverter))]
         public double Final { get; set; }
 
         [JsonProperty("discount_percent")]
         public int DiscountPercent { get; set; }
     }
-
-    public class LongToDoubleConverter : JsonConverter
-    {
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            var value = reader.Value.ToString();
-            return double.Parse(value.Insert(value.Length - 2, "."));
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotImplementedException("Unnecessary because CanRead is CanWrite. The type will skip the converter.");
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool CanRead
-        {
-            get { return true; }
-        }
-
-        public override bool CanWrite
-        {
-            get { return false; }
-        }
-    }
-
-    public class PriceOverviewSerializer : JsonSerializer
-    {
-
-    }
-
 }
