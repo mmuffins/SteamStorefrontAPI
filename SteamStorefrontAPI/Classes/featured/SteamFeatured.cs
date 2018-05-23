@@ -12,7 +12,7 @@ namespace SteamStorefrontAPI.Classes
     public class SteamFeatured
     {
         [JsonProperty("large_capsules")]
-        public List<object> LargeCapsules { get; set; }
+        public List<FeaturedApp> LargeCapsules { get; set; }
 
         [JsonProperty("featured_win")]
         public List<FeaturedApp> FeaturedWin { get; set; }
@@ -26,30 +26,23 @@ namespace SteamStorefrontAPI.Classes
         [JsonProperty("layout")]
         public string Layout { get; set; }
 
-        [JsonProperty("status")]
-        public int Status { get; set; }
+        //[JsonProperty("status")]
+        //public int Status { get; set; }
 
-        public static SteamFeatured FromJson(string json) => JsonConvert.DeserializeObject<SteamFeatured>(json, Converter.Settings);
-    }
-
-
-
-    public static class Serialize
-    {
-        public static string ToJson(this SteamFeatured self) => JsonConvert.SerializeObject(self, Converter.Settings);
-    }
-
-    static class Converter
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
+        public static SteamFeatured FromJson(string json)
         {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters = {
+
+            var serializerSettings = new JsonSerializerSettings
+            {
+                MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
+                DateParseHandling = DateParseHandling.None,
+                Converters = {
                 new ControllerSupportConverter(),
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
-    }
+                },
+            };
 
+            return JsonConvert.DeserializeObject<SteamFeatured>(json, serializerSettings);
+        }
+    }
 }

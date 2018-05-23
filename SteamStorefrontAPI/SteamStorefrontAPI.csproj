@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Converters.cs" />
+    <Compile Include="Endpoints\Featured.cs" />
     <Compile Include="Endpoints\AppDetails.cs" />
     <Compile Include="Classes\appdetails\LinuxRequirements.cs" />
     <Compile Include="Classes\appdetails\MacRequirements.cs" />
