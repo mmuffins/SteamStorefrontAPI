@@ -125,11 +125,7 @@ namespace SteamStorefrontAPI.Classes
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             if(reader.TokenType != JsonToken.StartObject) return null;
-
-            var value = serializer.Deserialize<Requirements>(reader);
-
-            //TODO: Fix the requirements converter
-            return null;
+            return serializer.Deserialize<Requirements>(reader);
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
