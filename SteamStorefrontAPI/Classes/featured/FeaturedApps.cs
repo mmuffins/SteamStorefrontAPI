@@ -9,19 +9,19 @@ using Newtonsoft.Json.Converters;
 
 namespace SteamStorefrontAPI.Classes
 {
-    public class SteamFeatured
+    public class FeaturedApps
     {
         [JsonProperty("large_capsules")]
-        public List<FeaturedApp> LargeCapsules { get; set; }
+        public List<AppInfo> LargeCapsules { get; set; }
 
         [JsonProperty("featured_win")]
-        public List<FeaturedApp> FeaturedWin { get; set; }
+        public List<AppInfo> FeaturedWin { get; set; }
 
         [JsonProperty("featured_mac")]
-        public List<FeaturedApp> FeaturedMac { get; set; }
+        public List<AppInfo> FeaturedMac { get; set; }
 
         [JsonProperty("featured_linux")]
-        public List<FeaturedApp> FeaturedLinux { get; set; }
+        public List<AppInfo> FeaturedLinux { get; set; }
 
         [JsonProperty("layout")]
         public string Layout { get; set; }
@@ -29,7 +29,7 @@ namespace SteamStorefrontAPI.Classes
         //[JsonProperty("status")]
         //public int Status { get; set; }
 
-        public static SteamFeatured FromJson(string json)
+        public static FeaturedApps FromJson(string json)
         {
 
             var serializerSettings = new JsonSerializerSettings
@@ -42,7 +42,7 @@ namespace SteamStorefrontAPI.Classes
                 },
             };
 
-            return JsonConvert.DeserializeObject<SteamFeatured>(json, serializerSettings);
+            return JsonConvert.DeserializeObject<FeaturedApps>(json, serializerSettings);
         }
     }
 }

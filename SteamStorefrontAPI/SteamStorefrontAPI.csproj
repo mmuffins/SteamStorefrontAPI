@@ -59,8 +59,8 @@
     <Compile Include="Classes\appdetails\Category.cs" />
     <Compile Include="Classes\appdetails\Highlighted.cs" />
     <Compile Include="Classes\appdetails\Achievements.cs" />
-    <Compile Include="Classes\featured\FeaturedApp.cs" />
-    <Compile Include="Classes\featured\SteamFeatured.cs" />
+    <Compile Include="Classes\common\AppInfo.cs" />
+    <Compile Include="Classes\featured\FeaturedApps.cs" />
     <Compile Include="Classes\appdetails\Sub.cs" />
     <Compile Include="Classes\appdetails\SupportInfo.cs" />
     <Compile Include="Classes\appdetails\Screenshot.cs" />
@@ -70,5 +70,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

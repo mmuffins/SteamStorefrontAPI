@@ -11,7 +11,7 @@ namespace SteamStorefrontAPI.Classes
 {
     public enum ControllerSupport { Full, Partial };
 
-    public class FeaturedApp
+    public class AppInfo
     {
         [JsonProperty("id")]
         public int Id { get; set; }

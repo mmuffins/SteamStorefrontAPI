@@ -23,7 +23,7 @@ namespace SteamStorefrontConsole
             //var steamApp = await AppDetails.GetAsync(443790);
             //var steamApp = await AppDetails.GetAsync(460810, "JP");
 
-            //var featured = await Featured.GetAsync();
+            var featured = await Featured.GetAsync();
 
             //Console.WriteLine(featured);
         }
