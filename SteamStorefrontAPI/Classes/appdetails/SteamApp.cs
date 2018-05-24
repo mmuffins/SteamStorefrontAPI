@@ -22,7 +22,7 @@ namespace SteamStorefrontAPI.Classes
         public int SteamAppid { get; set; }
 
         [JsonProperty("required_age")]
-        public string RequiredAge { get; set; }
+        public int RequiredAge { get; set; }
 
         [JsonProperty("is_free")]
         public bool IsFree { get; set; }
@@ -104,6 +104,16 @@ namespace SteamStorefrontAPI.Classes
 
         [JsonProperty("background")]
         public string Background { get; set; }
+
+        [JsonProperty("controller_support", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonConverter(typeof(ControllerSupportConverter))]
+        public ControllerSupport? ControllerSupport { get; set; }
+
+        [JsonProperty("dlc")]
+        public List<int> DLC { get; set; }
+
+        [JsonProperty("reviews")]
+        public List<string> Reviews { get; set; }
 
         public static SteamApp FromJson(string json) {
 
