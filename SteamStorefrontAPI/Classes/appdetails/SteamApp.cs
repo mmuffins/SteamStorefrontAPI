@@ -113,7 +113,7 @@ namespace SteamStorefrontAPI.Classes
         public List<int> DLC { get; set; }
 
         [JsonProperty("reviews")]
-        public List<string> Reviews { get; set; }
+        public string Reviews { get; set; }
 
         public static SteamApp FromJson(string json) {
 
