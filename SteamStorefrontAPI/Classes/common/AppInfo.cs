@@ -67,5 +67,11 @@ namespace SteamStorefrontAPI.Classes
         [JsonProperty("controller_support", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(ControllerSupportConverter))]
         public ControllerSupport? ControllerSupport { get; set; }
+
+        [JsonProperty("headline", NullValueHandling = NullValueHandling.Ignore)]
+        public string Headline { get; set; }
+
+        [JsonProperty("purchase_package", NullValueHandling = NullValueHandling.Ignore)]
+        public string PurchasePackage { get; set; }
     }
 }

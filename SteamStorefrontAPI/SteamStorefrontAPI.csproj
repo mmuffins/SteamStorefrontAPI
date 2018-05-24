@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\featuredcategories\FeaturedCategory.cs" />
     <Compile Include="Classes\Converters.cs" />
+    <Compile Include="Endpoints\FeaturedCategories.cs" />
     <Compile Include="Endpoints\Featured.cs" />
     <Compile Include="Endpoints\AppDetails.cs" />
     <Compile Include="Classes\appdetails\LinuxRequirements.cs" />
@@ -55,7 +57,7 @@
     <Compile Include="Classes\appdetails\PcRequirements.cs" />
     <Compile Include="Classes\appdetails\PackageGroup.cs" />
     <Compile Include="Classes\appdetails\Movie.cs" />
-    <Compile Include="Classes\appdetails\Genre.cs" />
+    <Compile Include="Classes\common\Genre.cs" />
     <Compile Include="Classes\appdetails\Category.cs" />
     <Compile Include="Classes\appdetails\Highlighted.cs" />
     <Compile Include="Classes\appdetails\Achievements.cs" />
