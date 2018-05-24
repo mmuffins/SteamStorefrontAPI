@@ -65,6 +65,7 @@ namespace SteamStorefrontAPI.Classes
                 return convertedValue;
             }
 
+            //TODO: fix the controller converter
             return null;
         }
 
@@ -93,6 +94,7 @@ namespace SteamStorefrontAPI.Classes
                 return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(parsedValue);
             }
 
+            //TODO: fix the epoch converter
             return null;
         }
 
@@ -102,6 +104,40 @@ namespace SteamStorefrontAPI.Classes
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    // Returns a Requirements object if the provided data is valid, otherwise returns null
+    public class RequirementsConverter : JsonConverter
+    {
+        public override bool CanRead
+        {
+            get => true;
+        }
+
+        public override bool CanWrite
+        {
+            get => false;
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            if(reader.TokenType != JsonToken.StartObject) return null;
+
+            var value = serializer.Deserialize<Requirements>(reader);
+
+            //TODO: Fix the requirements converter
+            return null;
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool CanConvert(Type objectType)
         {
             throw new NotImplementedException();
         }

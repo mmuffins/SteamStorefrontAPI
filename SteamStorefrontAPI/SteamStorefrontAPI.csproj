@@ -44,17 +44,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\featuredcategories\FeaturedCategory.cs" />
-    <Compile Include="Classes\Converters.cs" />
+    <Compile Include="Classes\common\Converters.cs" />
+    <Compile Include="Classes\packagedetails\FullGamepadSupport.cs" />
+    <Compile Include="Classes\packagedetails\PackageApp.cs" />
+    <Compile Include="Classes\packagedetails\PackageInfo.cs" />
+    <Compile Include="Endpoints\PackageDetails.cs" />
     <Compile Include="Endpoints\FeaturedCategories.cs" />
     <Compile Include="Endpoints\Featured.cs" />
     <Compile Include="Endpoints\AppDetails.cs" />
-    <Compile Include="Classes\appdetails\LinuxRequirements.cs" />
-    <Compile Include="Classes\appdetails\MacRequirements.cs" />
-    <Compile Include="Classes\appdetails\ReleaseDate.cs" />
+    <Compile Include="Classes\common\ReleaseDate.cs" />
     <Compile Include="Classes\appdetails\Recommendations.cs" />
-    <Compile Include="Classes\appdetails\PriceOverview.cs" />
-    <Compile Include="Classes\appdetails\Platforms.cs" />
-    <Compile Include="Classes\appdetails\PcRequirements.cs" />
+    <Compile Include="Classes\common\PriceOverview.cs" />
+    <Compile Include="Classes\common\Platforms.cs" />
+    <Compile Include="Classes\appdetails\Requirements.cs" />
     <Compile Include="Classes\appdetails\PackageGroup.cs" />
     <Compile Include="Classes\appdetails\Movie.cs" />
     <Compile Include="Classes\common\Genre.cs" />

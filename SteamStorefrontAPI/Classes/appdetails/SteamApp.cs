@@ -45,14 +45,17 @@ namespace SteamStorefrontAPI.Classes
         [JsonProperty("website")]
         public string Website { get; set; }
 
-        [JsonProperty("pc_requirements")]
-        public PcRequirements PcRequirements { get; set; }
+        [JsonProperty("pc_requirements", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonConverter(typeof(RequirementsConverter))]
+        public Requirements PcRequirements { get; set; }
 
-        [JsonProperty("mac_requirements")]
-        public List<MacRequirements> MacRequirements { get; set; }
+        [JsonProperty("mac_requirements", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonConverter(typeof(RequirementsConverter))]
+        public Requirements MacRequirements { get; set; }
 
-        [JsonProperty("linux_requirements")]
-        public List<LinuxRequirements> LinuxRequirements { get; set; }
+        [JsonProperty("linux_requirements", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonConverter(typeof(RequirementsConverter))]
+        public Requirements LinuxRequirements { get; set; }
 
         [JsonProperty("legal_notice")]
         public string LegalNotice { get; set; }

@@ -9,12 +9,12 @@ using Newtonsoft.Json.Converters;
 
 namespace SteamStorefrontAPI.Classes
 {
-    public class PcRequirements
+    public class Requirements
     {
-        [JsonProperty("minimum")]
+        [JsonProperty("minimum", NullValueHandling = NullValueHandling.Ignore)]
         public string Minimum { get; set; }
 
-        [JsonProperty("recommended")]
+        [JsonProperty("recommended", NullValueHandling = NullValueHandling.Ignore)]
         public string Recommended { get; set; }
     }
 }

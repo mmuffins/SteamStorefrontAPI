@@ -24,5 +24,9 @@ namespace SteamStorefrontAPI.Classes
 
         [JsonProperty("discount_percent")]
         public int DiscountPercent { get; set; }
+
+        [JsonProperty("individual", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonConverter(typeof(SteamPriceStringConverter))]
+        public double Individual { get; set; }
     }
 }

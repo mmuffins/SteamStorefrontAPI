@@ -9,12 +9,9 @@ using Newtonsoft.Json.Converters;
 
 namespace SteamStorefrontAPI.Classes
 {
-    public class MacRequirements
+    public class FullGamepadSupport
     {
-        [JsonProperty("minimum")]
-        public string Minimum { get; set; }
-
-        [JsonProperty("recommended")]
-        public string Recommended { get; set; }
+        [JsonProperty("full_gamepad")]
+        public bool FullGamepad { get; set; }
     }
 }
