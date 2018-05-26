@@ -11,6 +11,6 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>$copyright$</copyright>
-    <tags>steam api valve</tags>
+    <tags>steam steam-api api-wrapper valve</tags>
   </metadata>
 </package>
