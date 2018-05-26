@@ -18,18 +18,29 @@ namespace SteamStorefrontConsole
 
         static async Task Examples()
         {
-            var steamApp1 = await AppDetails.GetAsync(637670);
-            var steamApp2 = await AppDetails.GetAsync(443790);
-            var steamApp3 = await AppDetails.GetAsync(460810, "JP");
-            var steamApp4 = await AppDetails.GetAsync(322330, "US");
+            // Get details for SteamApp with ID 443790
+            SteamApp steamApp1 = await AppDetails.GetAsync(460810);
 
-            var package1 = await PackageDetails.GetAsync(68179);
-            var package2 = await PackageDetails.GetAsync(68179, "JP");
-            var package3 = await PackageDetails.GetAsync(235158);
-            var package4 = await PackageDetails.GetAsync(235158, "US");
+            // Get details for SteamApp with ID 443790 for region US
+            SteamApp steamApp2 = await AppDetails.GetAsync(322330, "US");
 
-            var featured = await Featured.GetAsync();
-            var featuredCategories = await FeaturedCategories.GetAsync();
+            // Get details for Package with ID 68179 for region
+            PackageInfo package1 = await PackageDetails.GetAsync(68179);
+
+            // Get details for Package with ID 68179 for region JP
+            PackageInfo package2 = await PackageDetails.GetAsync(68179, "JP");
+
+            // Get a list of featured games
+            FeaturedApps featured = await Featured.GetAsync();
+
+            // Get a list of featured games for region DE
+            FeaturedApps featured2 = await Featured.GetAsync("DE");
+
+            // Get a list of featured games grouped by category
+            List<FeaturedCategory> featuredCategories = await FeaturedCategories.GetAsync();
+
+            // Get a list of featured games grouped by category for region US
+            List<FeaturedCategory> featuredCategories2 = await FeaturedCategories.GetAsync("DE");
         }
     }
 }

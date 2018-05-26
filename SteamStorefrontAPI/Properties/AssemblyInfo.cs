@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SteamStorefrontAPI")]
 [assembly: AssemblyDescription("A .NET wrapper for the Steam Storefront API")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Michael Kellner")]
 [assembly: AssemblyProduct("SteamStorefrontAPI")]
-[assembly: AssemblyCopyright("Copyright © mmuffins 2018")]
+[assembly: AssemblyCopyright("Copyright © 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
