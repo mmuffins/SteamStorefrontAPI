@@ -16,19 +16,19 @@ namespace SteamStorefrontAPI
 
         public static async Task<SteamApp> GetAsync(int AppId)
         {
-            return await GetAsync(AppId, null, null);
+            return await GetAsync(AppId, "", "");
         }
 
         public static async Task<SteamApp> GetAsync(int AppId, string CountryCode)
         {
-            return await GetAsync(AppId, CountryCode, null);
+            return await GetAsync(AppId, CountryCode, "");
         }
 
         public static async Task<SteamApp> GetAsync(int AppId, string CountryCode, string Language)
         {
             string steamUri = $"{steamBaseUri}?appids={AppId}";
-            steamUri = CountryCode is null ? steamUri : $"{steamUri}&cc={CountryCode}";
-            steamUri = Language is null ? steamUri : $"{steamUri}&l={Language}";
+            steamUri = string.IsNullOrWhiteSpace(CountryCode) ? steamUri : $"{steamUri}&cc={CountryCode}";
+            steamUri = string.IsNullOrWhiteSpace(Language) ? steamUri : $"{steamUri}&l={Language}";
 
             var response = await client.GetAsync(steamUri);
             if (!response.IsSuccessStatusCode) { return null; }

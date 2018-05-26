@@ -28,8 +28,8 @@ namespace SteamStorefrontAPI
         public static async Task<FeaturedApps> GetAsync(string CountryCode, string Language)
         {
             string steamUri = steamBaseUri;
-            steamUri = CountryCode is null ? steamUri : $"{steamUri}&cc={CountryCode}";
-            steamUri = Language is null ? steamUri : $"{steamUri}&l={Language}";
+            steamUri = string.IsNullOrWhiteSpace(CountryCode) ? steamUri : $"{steamUri}&cc={CountryCode}";
+            steamUri = string.IsNullOrWhiteSpace(Language) ? steamUri : $"{steamUri}&l={Language}";
 
             var response = await client.GetAsync(steamUri);
             if (!response.IsSuccessStatusCode) { return null; }
