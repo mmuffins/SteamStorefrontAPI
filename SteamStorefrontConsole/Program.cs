@@ -24,6 +24,9 @@ namespace SteamStorefrontConsole
             // Get details for SteamApp with ID 443790 for region US
             SteamApp steamApp2 = await AppDetails.GetAsync(322330, "US");
 
+            // Get details for SteamApp with ID 443790 for region US with strings localized in german
+            SteamApp steamApp3 = await AppDetails.GetAsync(322330, "US", "german");
+
             // Get details for Package with ID 68179 for region
             PackageInfo package1 = await PackageDetails.GetAsync(68179);
 
@@ -35,6 +38,9 @@ namespace SteamStorefrontConsole
 
             // Get a list of featured games for region DE
             FeaturedApps featured2 = await Featured.GetAsync("DE");
+
+            // Get a list of featured games for region DE localized in english
+            FeaturedApps featured3 = await Featured.GetAsync("DE", "english");
 
             // Get a list of featured games grouped by category
             List<FeaturedCategory> featuredCategories = await FeaturedCategories.GetAsync();
