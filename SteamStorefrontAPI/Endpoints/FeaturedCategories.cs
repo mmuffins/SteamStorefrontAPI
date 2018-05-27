@@ -9,21 +9,32 @@ using System.Threading.Tasks;
 
 namespace SteamStorefrontAPI
 {
+    /// <summary>
+    /// Endpoint returning a list of featured items, grouped by category, in the steam store.</summary>  
     public static class FeaturedCategories
     {
         private static HttpClient client = new HttpClient();
         private const string steamBaseUri = "https://store.steampowered.com/api/featuredcategories";
 
+        /// <summary>
+        /// Retrieves a list of featured items, grouped by category, via an asynchronous operation.</summary>  
         public static async Task<List<FeaturedCategory>> GetAsync()
         {
             return await GetAsync(null, null);
         }
 
+        /// <summary>
+        /// Retrieves a list of featured items, grouped by category, via an asynchronous operation.</summary>  
+        /// <param name="CountryCode">Two letter country code to customise currency and date values.</param>
         public static async Task<List<FeaturedCategory>> GetAsync(string CountryCode)
         {
             return await GetAsync(CountryCode, null);
         }
 
+        /// <summary>
+        /// Retrieves a list of featured items, grouped by category, via an asynchronous operation.</summary>  
+        /// <param name="CountryCode">Two letter country code to customise currency and date values.</param>
+        /// <param name="Language">Full name of the language in english used for string localization e.g. name, description.</param>
         public static async Task<List<FeaturedCategory>> GetAsync(string CountryCode, string Language)
         {
             string steamUri = steamBaseUri;
