@@ -45,7 +45,7 @@ namespace SteamStorefrontAPI.Classes
     }
 
     // Converts a string to a ControllerSupport enum
-    internal class ControllerSupportConverter : JsonConverter
+    public class ControllerSupportConverter : JsonConverter
     {
         public override bool CanRead
         {
@@ -59,13 +59,11 @@ namespace SteamStorefrontAPI.Classes
             if (reader.TokenType == JsonToken.Null) return null;
             var value = serializer.Deserialize<string>(reader);
 
-            ControllerSupport convertedValue;
-            if(Enum.TryParse(value, out convertedValue))
+            if (Enum.TryParse(value, true, out ControllerSupport convertedValue))
             {
                 return convertedValue;
             }
 
-            //TODO: fix the controller converter
             return null;
         }
 
@@ -76,7 +74,7 @@ namespace SteamStorefrontAPI.Classes
     }
 
     // Converts an epoch string to a datetime object
-    internal class EpochToDateTimeConverter : JsonConverter
+    public class EpochToDateTimeConverter : JsonConverter
     {
         public override bool CanRead
         {
