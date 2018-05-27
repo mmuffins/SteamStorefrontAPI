@@ -92,7 +92,6 @@ namespace SteamStorefrontAPI.Classes
                 return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(parsedValue);
             }
 
-            //TODO: fix the epoch converter
             return null;
         }
 
