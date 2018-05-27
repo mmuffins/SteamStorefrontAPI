@@ -39,7 +39,7 @@ namespace SteamStorefrontAPI
         {
             string steamUri = steamBaseUri;
             steamUri = string.IsNullOrWhiteSpace(CountryCode) ? steamUri : $"{steamUri}&cc={CountryCode}";
-            steamUri = string.IsNullOrWhiteSpace(Language) ? steamUri : $"{steamUri}&l={Language}";
+            steamUri = string.IsNullOrWhiteSpace(Language) ? steamUri : $"{steamUri}&l={Language.ToLower()}";
 
             var response = await client.GetAsync(steamUri);
             if (!response.IsSuccessStatusCode) { return null; }
