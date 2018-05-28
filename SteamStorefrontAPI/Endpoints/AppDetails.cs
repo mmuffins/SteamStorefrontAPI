@@ -16,6 +16,7 @@ namespace SteamStorefrontAPI
         private static HttpClient client = new HttpClient();
         private const string steamBaseUri = "http://store.steampowered.com/api/appdetails";
 
+        /// <summary>
         /// Retrieves details for the specified application via an asynchronous operation.</summary>  
         /// <param name="AppId">Steam App ID.</param>
         public static async Task<SteamApp> GetAsync(int AppId)
@@ -23,6 +24,7 @@ namespace SteamStorefrontAPI
             return await GetAsync(AppId, "", "");
         }
 
+        /// <summary>
         /// Retrieves details for the specified application via an asynchronous operation.</summary>  
         /// <param name="AppId">Steam App ID.</param>
         /// <param name="CountryCode">Two letter country code to customise currency and date values.</param>
