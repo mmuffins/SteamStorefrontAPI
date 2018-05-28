@@ -38,8 +38,13 @@ namespace SteamStorefrontAPI
         public static async Task<List<FeaturedCategory>> GetAsync(string CountryCode, string Language)
         {
             string steamUri = steamBaseUri;
-            steamUri = string.IsNullOrWhiteSpace(CountryCode) ? steamUri : $"{steamUri}&cc={CountryCode}";
-            steamUri = string.IsNullOrWhiteSpace(Language) ? steamUri : $"{steamUri}&l={Language.ToLower()}";
+            steamUri = string.IsNullOrWhiteSpace(CountryCode) ? steamUri : $"{steamUri}?cc={CountryCode}";
+
+            if (!string.IsNullOrWhiteSpace(Language))
+            {
+                steamUri += string.IsNullOrWhiteSpace(CountryCode) ? "?" : "&";
+                steamUri += $"l={Language.ToLower()}";
+            }
 
             var response = await client.GetAsync(steamUri);
             if (!response.IsSuccessStatusCode) { return null; }
