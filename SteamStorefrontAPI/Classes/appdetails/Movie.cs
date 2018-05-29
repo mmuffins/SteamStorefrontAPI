@@ -21,10 +21,15 @@ namespace SteamStorefrontAPI.Classes
         public string Thumbnail { get; set; }
 
         [JsonProperty("webm")]
-        public Dictionary<string, string> Webm { get; set; }
+        public Dictionary<string, string> Webm { get; }
 
         [JsonProperty("highlight")]
         public bool Highlight { get; set; }
+
+        public Movie()
+        {
+            this.Webm = new Dictionary<string, string>();
+        }
     }
 
 }

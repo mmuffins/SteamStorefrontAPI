@@ -15,6 +15,11 @@ namespace SteamStorefrontAPI.Classes
         public long Total { get; set; }
 
         [JsonProperty("highlighted")]
-        public List<Highlighted> Highlighted { get; set; }
+        public List<Highlighted> Highlighted { get; }
+
+        public Achievements()
+        {
+            this.Highlighted = new List<Highlighted>();
+        }
     }
 }

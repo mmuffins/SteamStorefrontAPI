@@ -34,6 +34,11 @@ namespace SteamStorefrontAPI.Classes
         public string IsRecurringSubscription { get; set; }
 
         [JsonProperty("subs")]
-        public List<Sub> Subs { get; set; }
+        public List<Sub> Subs { get; }
+
+        public PackageGroup()
+        {
+            this.Subs = new List<Sub>();
+        }
     }
 }

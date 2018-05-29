@@ -18,7 +18,7 @@ namespace SteamStorefrontAPI.Classes
         public string Name { get; set; }
 
         [JsonProperty("items")]
-        public List<AppInfo> Items { get; set; }
+        public List<AppInfo> Items { get; }
 
         [JsonProperty("header_image")]
         public string HeaderImage { get; set; }
@@ -28,6 +28,11 @@ namespace SteamStorefrontAPI.Classes
 
         [JsonProperty("url")]
         public string Url { get; set; }
+
+        public FeaturedCategory()
+        {
+            this.Items = new List<AppInfo>();
+        }
 
         public static FeaturedCategory FromJson(string json)
         {

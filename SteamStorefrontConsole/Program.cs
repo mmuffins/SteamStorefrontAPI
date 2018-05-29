@@ -43,10 +43,10 @@ namespace SteamStorefrontConsole
             FeaturedApps featured3 = await Featured.GetAsync("DE", "english");
 
             // Get a list of featured games grouped by category
-            List<FeaturedCategory> featuredCategories = await FeaturedCategories.GetAsync();
+            List<FeaturedCategory> featuredCategories = (await FeaturedCategories.GetAsync()).ToList();
 
             // Get a list of featured games grouped by category for region US
-            List<FeaturedCategory> featuredCategories2 = await FeaturedCategories.GetAsync("DE");
+            List<FeaturedCategory> featuredCategories2 = (await FeaturedCategories.GetAsync("DE")).ToList();
         }
     }
 }

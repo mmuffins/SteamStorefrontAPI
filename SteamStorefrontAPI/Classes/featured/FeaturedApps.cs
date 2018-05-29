@@ -12,22 +12,30 @@ namespace SteamStorefrontAPI.Classes
     public class FeaturedApps
     {
         [JsonProperty("large_capsules")]
-        public List<AppInfo> LargeCapsules { get; set; }
+        public List<AppInfo> LargeCapsules { get; }
 
         [JsonProperty("featured_win")]
-        public List<AppInfo> FeaturedWin { get; set; }
+        public List<AppInfo> FeaturedWin { get; }
 
         [JsonProperty("featured_mac")]
-        public List<AppInfo> FeaturedMac { get; set; }
+        public List<AppInfo> FeaturedMac { get; }
 
         [JsonProperty("featured_linux")]
-        public List<AppInfo> FeaturedLinux { get; set; }
+        public List<AppInfo> FeaturedLinux { get; }
 
         [JsonProperty("layout")]
         public string Layout { get; set; }
 
         //[JsonProperty("status")]
         //public int Status { get; set; }
+
+        public FeaturedApps()
+        {
+            this.LargeCapsules = new List<AppInfo>();
+            this.FeaturedWin = new List<AppInfo>();
+            this.FeaturedMac = new List<AppInfo>();
+            this.FeaturedLinux = new List<AppInfo>();
+        }
 
         public static FeaturedApps FromJson(string json)
         {

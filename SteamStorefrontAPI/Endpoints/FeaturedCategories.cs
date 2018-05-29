@@ -18,7 +18,7 @@ namespace SteamStorefrontAPI
 
         /// <summary>
         /// Retrieves a list of featured items, grouped by category, via an asynchronous operation.</summary>  
-        public static async Task<List<FeaturedCategory>> GetAsync()
+        public static async Task<IEnumerable<FeaturedCategory>> GetAsync()
         {
             return await GetAsync(null, null);
         }
@@ -26,7 +26,7 @@ namespace SteamStorefrontAPI
         /// <summary>
         /// Retrieves a list of featured items, grouped by category, via an asynchronous operation.</summary>  
         /// <param name="CountryCode">Two letter country code to customise currency and date values.</param>
-        public static async Task<List<FeaturedCategory>> GetAsync(string CountryCode)
+        public static async Task<IEnumerable<FeaturedCategory>> GetAsync(string CountryCode)
         {
             return await GetAsync(CountryCode, null);
         }
@@ -35,7 +35,7 @@ namespace SteamStorefrontAPI
         /// Retrieves a list of featured items, grouped by category, via an asynchronous operation.</summary>  
         /// <param name="CountryCode">Two letter country code to customise currency and date values.</param>
         /// <param name="Language">Full name of the language in english used for string localization e.g. name, description.</param>
-        public static async Task<List<FeaturedCategory>> GetAsync(string CountryCode, string Language)
+        public static async Task<IEnumerable<FeaturedCategory>> GetAsync(string CountryCode, string Language)
         {
             string steamUri = steamBaseUri;
             steamUri = string.IsNullOrWhiteSpace(CountryCode) ? steamUri : $"{steamUri}?cc={CountryCode}";

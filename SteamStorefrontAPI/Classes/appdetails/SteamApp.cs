@@ -61,34 +61,34 @@ namespace SteamStorefrontAPI.Classes
         public string LegalNotice { get; set; }
 
         [JsonProperty("developers")]
-        public List<string> Developers { get; set; }
+        public List<string> Developers { get; }
 
         [JsonProperty("publishers")]
-        public List<string> Publishers { get; set; }
+        public List<string> Publishers { get; }
 
         [JsonProperty("price_overview")]
         public PriceOverview PriceOverview { get; set; }
 
         [JsonProperty("packages")]
-        public List<long> Packages { get; set; }
+        public List<long> Packages { get;  }
 
         [JsonProperty("package_groups")]
-        public List<PackageGroup> PackageGroups { get; set; }
+        public List<PackageGroup> PackageGroups { get; }
 
         [JsonProperty("platforms")]
         public Platforms Platforms { get; set; }
 
         [JsonProperty("categories")]
-        public List<Category> Categories { get; set; }
+        public List<Category> Categories { get; }
 
         [JsonProperty("genres")]
-        public List<Genre> Genres { get; set; }
+        public List<Genre> Genres { get; }
 
         [JsonProperty("screenshots")]
-        public List<Screenshot> Screenshots { get; set; }
+        public List<Screenshot> Screenshots { get; }
 
         [JsonProperty("movies")]
-        public List<Movie> Movies { get; set; }
+        public List<Movie> Movies { get; }
 
         [JsonProperty("recommendations")]
         public Recommendations Recommendations { get; set; }
@@ -110,10 +110,23 @@ namespace SteamStorefrontAPI.Classes
         public ControllerSupport? ControllerSupport { get; set; }
 
         [JsonProperty("dlc")]
-        public List<int> DLC { get; set; }
+        public List<int> DLC { get; }
 
         [JsonProperty("reviews")]
         public string Reviews { get; set; }
+
+        public SteamApp()
+        {
+            this.Developers = new List<string>();
+            this.Publishers = new List<string>();
+            this.Packages = new List<long>();
+            this.PackageGroups = new List<PackageGroup>();
+            this.Categories = new List<Category>();
+            this.Genres = new List<Genre>();
+            this.Screenshots = new List<Screenshot>();
+            this.Movies = new List<Movie>();
+            this.DLC = new List<int>();
+        }
 
         public static SteamApp FromJson(string json) {
 

@@ -24,7 +24,7 @@ namespace SteamStorefrontAPI.Classes
         public string SmallLogo { get; set; }
 
         [JsonProperty("apps")]
-        public List<PackageApp> Apps { get; set; }
+        public List<PackageApp> Apps { get; }
 
         [JsonProperty("price")]
         public PriceOverview Price { get; set; }
@@ -37,6 +37,12 @@ namespace SteamStorefrontAPI.Classes
 
         [JsonProperty("release_date")]
         public ReleaseDate ReleaseDate { get; set; }
+
+        public PackageInfo()
+        {
+            this.Apps = new List<PackageApp>();
+
+        }
 
         public static SteamApp FromJson(string json)
         {
