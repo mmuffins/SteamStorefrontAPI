@@ -9,7 +9,7 @@ using Newtonsoft.Json.Converters;
 
 namespace SteamStorefrontAPI.Classes
 {
-    public class FeaturedCategory
+    public class FeaturedCategory : IEquatable<FeaturedCategory>
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -47,7 +47,33 @@ namespace SteamStorefrontAPI.Classes
 
             return JsonConvert.DeserializeObject<FeaturedCategory>(json, serializerSettings);
         }
+
+        public bool Equals(FeaturedCategory other)
+        {
+            if (other == null)
+                return false;
+
+            if (this.Id == other.Id)
+                return true;
+            else
+                return false;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+                return false;
+
+            FeaturedCategory personObj = obj as FeaturedCategory;
+            if (personObj == null)
+                return false;
+            else
+                return Equals(personObj);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Id.GetHashCode();
+        }
     }
-
-
 }

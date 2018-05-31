@@ -11,7 +11,7 @@ namespace SteamStorefrontAPI.Classes
 {
     public enum ControllerSupport { Full, Partial };
 
-    public class AppInfo
+    public class AppInfo : IEquatable<AppInfo>
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -73,5 +73,33 @@ namespace SteamStorefrontAPI.Classes
 
         [JsonProperty("purchase_package", NullValueHandling = NullValueHandling.Ignore)]
         public string PurchasePackage { get; set; }
+
+        public bool Equals(AppInfo other)
+        {
+            if (other == null)
+                return false;
+
+            if (this.Id == other.Id && this.Type == other.Type)
+                return true;
+            else
+                return false;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+                return false;
+
+            AppInfo personObj = obj as AppInfo;
+            if (personObj == null)
+                return false;
+            else
+                return Equals(personObj);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Id.GetHashCode();
+        }
     }
 }

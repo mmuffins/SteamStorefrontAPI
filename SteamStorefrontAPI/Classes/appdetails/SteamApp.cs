@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace SteamStorefrontAPI.Classes
 {
-    public class SteamApp
+    public class SteamApp : IEquatable<SteamApp>
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -128,7 +128,8 @@ namespace SteamStorefrontAPI.Classes
             this.DLC = new List<int>();
         }
 
-        public static SteamApp FromJson(string json) {
+        public static SteamApp FromJson(string json)
+        {
 
             var serializerSettings = new JsonSerializerSettings
             {
@@ -140,6 +141,34 @@ namespace SteamStorefrontAPI.Classes
             };
 
             return JsonConvert.DeserializeObject<SteamApp>(json, serializerSettings);
+        }
+
+        public bool Equals(SteamApp other)
+        {
+            if (other == null)
+                return false;
+
+            if (this.SteamAppId == other.SteamAppId && this.Type == other.Type)
+                return true;
+            else
+                return false;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+                return false;
+
+            SteamApp personObj = obj as SteamApp;
+            if (personObj == null)
+                return false;
+            else
+                return Equals(personObj);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.SteamAppId.GetHashCode();
         }
     }
 }
