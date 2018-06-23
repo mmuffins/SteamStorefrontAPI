@@ -53,7 +53,9 @@ namespace SteamStorefrontAPI
             var jsonData = JToken.Parse(result).First.First;
             if (!bool.Parse(jsonData["success"].ToString())) { return null; }
 
-            return jsonData["data"].ToObject<PackageInfo>();
+            var package = jsonData["data"].ToObject<PackageInfo>();
+            package.SteamPackageId = PackageId;
+            return package;
         }
     }
 }

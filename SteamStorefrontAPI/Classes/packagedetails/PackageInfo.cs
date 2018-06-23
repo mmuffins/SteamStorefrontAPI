@@ -14,6 +14,8 @@ namespace SteamStorefrontAPI.Classes
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        public int SteamPackageId { get; set; }
+
         [JsonProperty("purchase_text")]
         public string PurchaseText { get; set; }
 
