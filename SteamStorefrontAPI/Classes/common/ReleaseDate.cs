@@ -16,5 +16,7 @@ namespace SteamStorefrontAPI.Classes
 
         [JsonProperty("date")]
         public string Date { get; set; }
+
+        public override string ToString() => string.IsNullOrWhiteSpace(Date) ? "Coming Soon" : Date;
     }
 }

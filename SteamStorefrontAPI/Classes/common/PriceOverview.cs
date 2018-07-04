@@ -62,5 +62,7 @@ namespace SteamStorefrontAPI.Classes
                 ^ this.Initial.GetHashCode() 
                 ^ this.Currency.GetHashCode();
         }
+
+        public override string ToString() => Final.ToString() + " " + Currency;
     }
 }

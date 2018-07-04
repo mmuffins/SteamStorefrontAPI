@@ -166,9 +166,8 @@ namespace SteamStorefrontAPI.Classes
                 return Equals(personObj);
         }
 
-        public override int GetHashCode()
-        {
-            return this.SteamAppId.GetHashCode();
-        }
+        public override int GetHashCode() => this.SteamAppId.GetHashCode();
+
+        public override string ToString() => Name;
     }
 }

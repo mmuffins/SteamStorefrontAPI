@@ -30,6 +30,8 @@ namespace SteamStorefrontAPI.Classes
         {
             this.Webm = new Dictionary<string, string>();
         }
+
+        public override string ToString() => Name;
     }
 
 }

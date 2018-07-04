@@ -44,5 +44,10 @@ namespace SteamStorefrontAPI.Classes
         {
             return this.Id.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

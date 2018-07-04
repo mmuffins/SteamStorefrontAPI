@@ -13,5 +13,7 @@ namespace SteamStorefrontAPI.Classes
     {
         [JsonProperty("total")]
         public long Total { get; set; }
+
+        public override string ToString() => Total.ToString();
     }
 }

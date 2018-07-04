@@ -16,5 +16,7 @@ namespace SteamStorefrontAPI.Classes
 
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        public override string ToString() => Description;
     }
 }

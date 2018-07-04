@@ -19,6 +19,11 @@ namespace SteamStorefrontAPI.Classes
 
         [JsonProperty("linux")]
         public bool Linux { get; set; }
+
+        public override string ToString()
+        {
+            return string.Join(",", (Windows ? "Windows" : null), (Linux ? "Linux" : null), (Mac ? "Mac" : null));
+        }
     }
 
 }

@@ -14,9 +14,6 @@ namespace SteamStorefrontAPI.Classes
         [JsonProperty("full_gamepad")]
         public bool FullGamepad { get; set; }
 
-        public override string ToString()
-        {
-            return FullGamepad.ToString();
-        }
+        public override string ToString() => FullGamepad.ToString();
     }
 }

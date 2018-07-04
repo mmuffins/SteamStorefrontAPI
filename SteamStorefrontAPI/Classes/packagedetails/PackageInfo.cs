@@ -60,5 +60,7 @@ namespace SteamStorefrontAPI.Classes
 
             return JsonConvert.DeserializeObject<SteamApp>(json, serializerSettings);
         }
+
+        public override string ToString() => Name;
     }
 }
