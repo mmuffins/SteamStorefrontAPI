@@ -67,9 +67,8 @@ jobs:
         name: nuget
         path: ${{ github.workspace }}/publish
         
-    - name: Execute unit tests
+    - name: Push to NuGet
       shell: pwsh
       run: |
         Set-Location -Path '${{ github.workspace }}/publish'
-        Get-ChildItem
-        # dotnet nuget push "*.nupkg" --api-key ${{ secrets.nuget_api_key }} --source https://api.nuget.org/v3/index.json
+        dotnet nuget push "*.nupkg" --api-key ${{ secrets.nuget_api_key }} --source https://api.nuget.org/v3/index.json
