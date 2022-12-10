@@ -51,9 +51,9 @@ jobs:
     - name: Set version number
       shell: pwsh
       run: |
-        $version = [Management.Automation.SemanticVersion]::new(2, 0, 0, $env:GITHUB_RUN_NUMBER)
+        $version = "2.0.0.$($env:GITHUB_RUN_NUMBER)"
         Write-Output "Setting version to $version"
-        "VERSION=$($version.ToString())" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+        "VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
     - name: Pack nuget
       run: |
