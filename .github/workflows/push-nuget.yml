@@ -1,9 +1,9 @@
-name: push nuget
+name: 2.0.0.${{github.run_number}}.
 
 on:
   workflow_dispatch:
-  release:
-    types: [published]
+  push:
+    branches: [ "master" ]
 
 jobs:
 
@@ -33,10 +33,28 @@ jobs:
       
     - name: Pack nuget
       run: |
-        dotnet pack -c Release --no-build --output "${{ github.workspace }}/publish"
+        dotnet pack SteamStorefrontAPI -c Release --no-build --output "${{ github.workspace }}/publish"
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: nuget packages
+        name: nuget
+        path: ${{ github.workspace }}/publish
+		
+  deploy:
+    permissions:
+      contents: none
+    runs-on: windows-latest
+    needs: build
+	
+    steps:
+
+    - name: Pack nuget
+      run: |
+        Write-Output "${{ run-name }}"
+		
+    - name: Get artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: nuget
         path: ${{ github.workspace }}/publish
