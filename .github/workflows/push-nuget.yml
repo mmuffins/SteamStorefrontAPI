@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   push:
     branches: [ "master" ]
+    
+env:
+  BASE_VERSION_NUMBER: "2.0.0" 
 
 jobs:
 
@@ -51,7 +54,7 @@ jobs:
     - name: Set version number
       shell: pwsh
       run: |
-        $version = "2.0.0.$($env:GITHUB_RUN_NUMBER)"
+        $version = "${{ env.BASE_VERSION_NUMBER }}.$($env:GITHUB_RUN_NUMBER)${{ github.run_attempt }}"
         Write-Output "Setting version to $version"
         "VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
