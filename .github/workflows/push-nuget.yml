@@ -1,4 +1,4 @@
-name: 2.0.0.${{ GITHUB_RUN_NUMBER }}
+name: push nuget
 
 on:
   workflow_dispatch:
@@ -48,10 +48,16 @@ jobs:
     needs: build
 
     steps:
+    - name: Set version number
+      shell: pwsh
+      run: |
+        $version = [Management.Automation.SemanticVersion]::new(2, 0, 0, $env:GITHUB_RUN_NUMBER)
+        Write-Output "Setting version to $version"
+        "VERSION=$($version.ToString())" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
     - name: Pack nuget
       run: |
-        Write-Output "${{ run-name }}"
+        Write-Output "${{ env.VERSION }}"
 
     - name: Get artifacts
       uses: actions/download-artifact@v3
