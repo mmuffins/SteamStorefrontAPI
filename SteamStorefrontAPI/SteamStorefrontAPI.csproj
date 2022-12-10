@@ -13,6 +13,7 @@
     <Description>A .NET wrapper for the Steam Storefront API</Description>
     <PackageTags>steam;steam-api;valve</PackageTags>
     <RepositoryUrl>https://github.com/mmuffins/SteamStorefrontAPI</RepositoryUrl>
+    <Authors>mmuffins</Authors>
   </PropertyGroup>
 
   <ItemGroup>
