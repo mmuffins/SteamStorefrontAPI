@@ -40,19 +40,19 @@ jobs:
       with:
         name: nuget
         path: ${{ github.workspace }}/publish
-		
+
   deploy:
     permissions:
       contents: none
     runs-on: windows-latest
     needs: build
-	
+
     steps:
 
     - name: Pack nuget
       run: |
         Write-Output "${{ run-name }}"
-		
+
     - name: Get artifacts
       uses: actions/download-artifact@v3
       with:
