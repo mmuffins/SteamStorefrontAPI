@@ -1,4 +1,4 @@
-name: 2.0.0.${{ github.run_number }}
+name: 2.0.0.${{ GITHUB_RUN_NUMBER }}
 
 on:
   workflow_dispatch:
