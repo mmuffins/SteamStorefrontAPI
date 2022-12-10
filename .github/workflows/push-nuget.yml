@@ -1,6 +1,7 @@
 name: push nuget
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
