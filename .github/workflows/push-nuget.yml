@@ -6,7 +6,7 @@ on:
     branches: [ "master" ]
     
 env:
-  BASE_VERSION_NUMBER: "2.0.0" 
+  base_version_number: "2.0.0" 
 
 jobs:
 
@@ -29,14 +29,24 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Build Solution
-      run: dotnet build -c Release
+      shell: pwsh
+      run: dotnet build --configuration Release
 
     - name: Execute unit tests
-      run: dotnet test -c Release --no-build
+      shell: pwsh
+      run: dotnet test --configuration Release --no-build
       
-    - name: Pack nuget
+    - name: Set version number
+      shell: pwsh
       run: |
-        dotnet pack SteamStorefrontAPI -c Release --no-build --output "${{ github.workspace }}/publish"
+        $version = "${{ env.base_version_number }}.${{ github.run_number }}${{ github.run_attempt }}"
+        Write-Output "Setting version to $version"
+        "VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+    - name: Pack nuget
+      shell: pwsh
+      run: |
+        dotnet pack SteamStorefrontAPI --configuration Release --no-build --output "${{ github.workspace }}/publish" /p:PackageVersion=${{ env.VERSION }}
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
@@ -51,19 +61,15 @@ jobs:
     needs: build
 
     steps:
-    - name: Set version number
-      shell: pwsh
-      run: |
-        $version = "${{ env.BASE_VERSION_NUMBER }}.$($env:GITHUB_RUN_NUMBER)${{ github.run_attempt }}"
-        Write-Output "Setting version to $version"
-        "VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-
-    - name: Pack nuget
-      run: |
-        Write-Output "${{ env.VERSION }}"
-
     - name: Get artifacts
       uses: actions/download-artifact@v3
       with:
         name: nuget
         path: ${{ github.workspace }}/publish
+        
+    - name: Execute unit tests
+      shell: pwsh
+      run: |
+        Set-Location -Path '${{ github.workspace }}/publish'
+        Get-ChildItem
+        # dotnet nuget push "*.nupkg" --api-key ${{ secrets.nuget_api_key }} --source https://api.nuget.org/v3/index.json
