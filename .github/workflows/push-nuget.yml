@@ -43,6 +43,12 @@ jobs:
     - name: Build Solution
       shell: pwsh
       run: dotnet build --configuration ${{ env.build_configuration }} /p:Version=${{ env.VERSION }}
+      
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: library
+        path: ${{ github.workspace }}/SteamStorefrontAPI/bin/${{ env.configuration }}
 
     - name: Execute unit tests
       shell: pwsh
