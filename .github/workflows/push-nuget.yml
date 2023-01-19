@@ -7,6 +7,7 @@ on:
     
 env:
   base_version_number: "2.0.1" 
+  build_configuration: "Release"
 
 jobs:
 
@@ -41,16 +42,16 @@ jobs:
 
     - name: Build Solution
       shell: pwsh
-      run: dotnet build --configuration Release /p:Version=${{ env.VERSION }}
+      run: dotnet build --configuration ${{ env.build_configuration }} /p:Version=${{ env.VERSION }}
 
     - name: Execute unit tests
       shell: pwsh
-      run: dotnet test --configuration Release --no-build
+      run: dotnet test --configuration ${{ env.build_configuration }} --no-build
       
     - name: Pack nuget
       shell: pwsh
       run: |
-        dotnet pack SteamStorefrontAPI --configuration Release --no-build --output "${{ github.workspace }}/publish" /p:PackageVersion=${{ env.VERSION }}
+        dotnet pack SteamStorefrontAPI --configuration ${{ env.build_configuration }} --no-build --output "${{ github.workspace }}/publish" /p:PackageVersion=${{ env.VERSION }}
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
