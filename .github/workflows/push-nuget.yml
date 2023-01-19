@@ -71,8 +71,6 @@ jobs:
   deploy:
     if: ${{ github.event_name != 'pull_request'  && github.ref_name == 'main' }}
     environment: 'nuget'
-    permissions:
-      contents: none
     runs-on: windows-latest
     needs: build
 
@@ -82,7 +80,18 @@ jobs:
       with:
         name: nuget
         path: ${{ github.workspace }}/publish
-        
+
+    - name: Tag commit
+      uses: actions/github-script@v5
+      with:
+        script: |
+          github.rest.git.createRef({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: 'refs/tags/${{ needs.build.outputs.version }}',
+            sha: context.sha
+          })
+
     - name: Push to NuGet
       shell: pwsh
       run: |
