@@ -6,7 +6,7 @@ on:
     branches: [ "master" ]
     
 env:
-  base_version_number: "2.0.0" 
+  base_version_number: "2.0.1" 
 
 jobs:
 
@@ -41,7 +41,7 @@ jobs:
 
     - name: Build Solution
       shell: pwsh
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration Release /p:Version=${{ env.VERSION }}
 
     - name: Execute unit tests
       shell: pwsh
