@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
   push:
     branches: [ "master" ]
-    
+  pull_request:
+
 env:
   base_version_number: "2.0.1" 
   build_configuration: "Release"
