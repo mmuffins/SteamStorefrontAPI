@@ -29,7 +29,7 @@ jobs:
     - name: Install .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 8.0.x
 
     - name: Setup msbuild
       uses: microsoft/setup-msbuild@v1.0.2
@@ -54,8 +54,14 @@ jobs:
         path: ${{ github.workspace }}/SteamStorefrontAPI/bin/${{ env.configuration }}
 
     - name: Execute unit tests
-      shell: pwsh
-      run: dotnet test --configuration ${{ env.build_configuration }} --no-build
+      run: dotnet test --configuration ${{ env.build_configuration }} --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx"
+
+    - name: Publish Unit Test Results
+      uses: dorny/test-reporter@v1
+      with:
+        name: Unit Test Results
+        path: Tests/**/TestResults.trx
+        reporter: dotnet-trx
       
     - name: Pack nuget
       shell: pwsh
