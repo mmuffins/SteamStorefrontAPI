@@ -19,6 +19,9 @@ jobs:
     timeout-minutes: 10
     outputs:
       version: ${{ steps.set-version.outputs.VERSION }}
+    permissions:
+      checks: write
+      contents: write
 
     steps:
     - name: Checkout
