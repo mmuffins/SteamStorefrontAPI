@@ -24,13 +24,18 @@ namespace SteamStorefrontAPI.Classes
         {
             if (reader.TokenType == JsonToken.Null) return null;
             var value = reader.Value.ToString();
+            double result;
+            var style = System.Globalization.NumberStyles.AllowDecimalPoint;
+            var provider = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
-            if(value.Length < 2)
+            if (value.Length < 2)
             {
-                return double.Parse($".{value}");
+                double.TryParse($".{value}", style, provider, out result);
+            } else {
+                double.TryParse(value.Insert(value.Length - 2, "."), style, provider, out result);
             }
 
-            return double.Parse(value.Insert(value.Length - 2, "."));
+            return result;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
