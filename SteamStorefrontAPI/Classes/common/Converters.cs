@@ -23,17 +23,18 @@ namespace SteamStorefrontAPI.Classes
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.Null) return null;
+
             var value = reader.Value.ToString();
+            if (value.Length < 2)
+            {
+                value = value.PadLeft(2, '0');
+            }
+
             double result;
             var style = System.Globalization.NumberStyles.AllowDecimalPoint;
             var provider = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
-            if (value.Length < 2)
-            {
-                double.TryParse($".{value}", style, provider, out result);
-            } else {
-                double.TryParse(value.Insert(value.Length - 2, "."), style, provider, out result);
-            }
+            double.TryParse(value.Insert(value.Length - 2, "."), style, provider, out result);
 
             return result;
         }
