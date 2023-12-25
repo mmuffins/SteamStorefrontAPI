@@ -1,5 +1,7 @@
-﻿using SteamStorefrontAPI;
+﻿using Newtonsoft.Json;
+using SteamStorefrontAPI;
 using SteamStorefrontAPI.Classes;
+using System.Globalization;
 
 namespace Tests
 {
@@ -113,6 +115,85 @@ namespace Tests
         {
             var featuredCategories = await FeaturedCategories.GetAsync();
             Assert.NotEmpty(featuredCategories);
+        }
+
+        public static IEnumerable<object[]> SteamPriceStringConverterCultures =>
+            new List<object[]>
+            {
+                new object[] { "en-US", "1000", 10.00 },
+                new object[] { "en-US", "700", 7.00 },
+                new object[] { "en-US", "50", 0.50 },
+                new object[] { "en-US", "5899", 58.99 },
+                new object[] { "en-US", "123456789", 1234567.89 },
+                new object[] { "en-US", "1", 0.01 },
+                new object[] { "en-US", "99", 0.99 },
+                new object[] { "en-US", "0", 0.00 },
+                new object[] { "en-US", "00", 0.00 },
+                new object[] { "en-US", "000", 0.00 },
+                new object[] { "en-US", "1000000000000", 10000000000.00 },
+                new object[] { "en-US", "12345678901234", 123456789012.34 },
+
+                new object[] { "de-DE", "1000", 10.00 },
+                new object[] { "de-DE", "700", 7.00 },
+                new object[] { "de-DE", "50", 0.50 },
+                new object[] { "de-DE", "5899", 58.99 },
+                new object[] { "de-DE", "123456789", 1234567.89 },
+                new object[] { "de-DE", "1", 0.01 },
+                new object[] { "de-DE", "99", 0.99 },
+                new object[] { "de-DE", "0", 0.00 },
+                new object[] { "de-DE", "00", 0.00 },
+                new object[] { "de-DE", "000", 0.00 },
+                new object[] { "de-DE", "1000000000000", 10000000000.00 },
+                new object[] { "de-DE", "12345678901234", 123456789012.34 },
+
+                new object[] { "fr-FR", "1000", 10.00 },
+                new object[] { "fr-FR", "700", 7.00 },
+                new object[] { "fr-FR", "50", 0.50 },
+                new object[] { "fr-FR", "5899", 58.99 },
+                new object[] { "fr-FR", "123456789", 1234567.89 },
+                new object[] { "fr-FR", "1", 0.01 },
+                new object[] { "fr-FR", "99", 0.99 },
+                new object[] { "fr-FR", "0", 0.00 },
+                new object[] { "fr-FR", "00", 0.00 },
+                new object[] { "fr-FR", "000", 0.00 },
+                new object[] { "fr-FR", "1000000000000", 10000000000.00 },
+                new object[] { "fr-FR", "12345678901234", 123456789012.34 },
+
+                new object[] { "ja-JP", "1000", 10.00 },
+                new object[] { "ja-JP", "700", 7.00 },
+                new object[] { "ja-JP", "50", 0.50 },
+                new object[] { "ja-JP", "5899", 58.99 },
+                new object[] { "ja-JP", "123456789", 1234567.89 },
+                new object[] { "ja-JP", "1", 0.01 },
+                new object[] { "ja-JP", "99", 0.99 },
+                new object[] { "ja-JP", "0", 0.00 },
+                new object[] { "ja-JP", "00", 0.00 },
+                new object[] { "ja-JP", "000", 0.00 },
+                new object[] { "ja-JP", "1000000000000", 10000000000.00 },
+                new object[] { "ja-JP", "12345678901234", 123456789012.34 },
+            };
+
+        [Theory]
+        [MemberData(nameof(SteamPriceStringConverterCultures))]
+        public void SteamPriceStringConverterCulturesConversion(string culture, string valueString, double convertedValue)
+        {
+            var originalCulture = CultureInfo.CurrentCulture;
+            CultureInfo.CurrentCulture = new CultureInfo(culture);
+
+            try
+            {
+                var jsonReader = new JsonTextReader(new StringReader(valueString));
+                jsonReader.Read();
+
+                var converter = new SteamPriceStringConverter();
+                var result = converter.ReadJson(jsonReader, null, null, new JsonSerializer());
+
+                Assert.Equal(convertedValue, result);
+            }
+            finally
+            {
+                CultureInfo.CurrentCulture = originalCulture;
+            }
         }
     }
 }
