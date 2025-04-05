@@ -60,7 +60,7 @@ jobs:
       run: dotnet test --configuration ${{ env.build_configuration }} --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx"
 
     - name: Publish Unit Test Results
-      uses: dorny/test-reporter@v1
+      uses: dorny/test-reporter@v2
       with:
         name: Unit Test Results
         path: Tests/**/TestResults.trx
