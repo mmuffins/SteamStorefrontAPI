@@ -82,6 +82,8 @@ jobs:
     environment: 'nuget'
     runs-on: windows-latest
     needs: build
+    permissions:
+      contents: write
 
     steps:
     - name: Get artifacts
