@@ -84,6 +84,8 @@ jobs:
     needs: build
     permissions:
       contents: write
+      id-token: write  # GitHub OIDC token
+      
 
     steps:
     - name: Get artifacts
@@ -92,6 +94,12 @@ jobs:
         name: nuget
         path: ${{ github.workspace }}/publish
 
+    - name: NuGet login
+      uses: NuGet/login@v1
+      id: nugetlogin
+      with:
+        user: ${{ secrets.NUGET_USER }}
+        
     - name: Tag commit
       uses: actions/github-script@v9
       with:
@@ -102,9 +110,9 @@ jobs:
             ref: 'refs/tags/${{ needs.build.outputs.version }}',
             sha: context.sha
           })
-
+          
     - name: Push to NuGet
       shell: pwsh
       run: |
         Set-Location -Path '${{ github.workspace }}/publish'
-        dotnet nuget push "*.nupkg" --api-key ${{ secrets.nuget_api_key }} --source https://api.nuget.org/v3/index.json
+        dotnet nuget push "*.nupkg" --api-key ${{steps.nugetlogin.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
